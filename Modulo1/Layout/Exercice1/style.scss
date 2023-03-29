@@ -1,0 +1,86 @@
+$colors: red, blue, green;
+$color-red: #ff0000;
+$color-green: #00ff00;
+$color-blue: #0000ff;
+
+.color-box-text {
+}
+
+.box {
+  text-align: center;
+  border-radius: 5px; /* Mitad del ancho o alto del cuadrado */
+  padding: 20px;
+}
+
+@for $j from 1 through 3 {
+  .container-#{$j} {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr); /* Crear 9 columnas */
+    grid-template-rows: auto;
+    column-gap: 5px;
+    row-gap: 15px;
+
+    .base-color {
+      @extend .box;
+      @if $j == 1 {
+        background-color: $color-red;        
+      }
+      @elseif $j == 2 {
+        background-color: $color-blue;
+      } @else {
+        background-color: $color-green;
+      }
+    }
+
+    @for $i from 1 through 4 {
+      .darken-#{$i} {
+        @extend .box;
+        @if $j == 1 {
+          background-color: darken($color-red, 10% * $i);
+        }
+        @elseif $j == 2 {
+          background-color: darken($color-blue, 10% * $i);
+        } @else {
+          background-color: darken($color-green, 10% * $i);
+        }
+      }
+
+      .lighten-#{$i} {
+        @extend .box;
+        @if $j == 1 {
+          background-color: lighten($color-red, 10% * $i);
+        }
+        @elseif $j == 2 {
+          background-color: lighten($color-blue, 10% * $i);
+        } @else {
+          background-color: lighten($color-green, 10% * $i);
+        }
+      }
+    }
+  }
+}
+
+
+
+// @for $i from 1 through 3 {
+//   @each $color in $colors {
+//     .container-#{$i} {
+//       display: flex;
+//       @for $i from 1 through 4 {
+//         .darken-#{$i} {
+//           @extend .box;
+//           background-color: darken($color, 10% * $i);
+//         }
+
+//         .lighten-#{$i} {
+//           @extend .box;
+//           background-color: lighten($color, 10% * $i);
+//         }
+//       }
+//     }
+//     .base-color {
+//       @extend .box;
+//       background-color: $color;
+//     }
+//   }
+// }
