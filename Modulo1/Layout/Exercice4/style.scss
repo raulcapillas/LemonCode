@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto");
+$fonts: "Roboto", Helvetica, sans-serif;
+$primary-color: #ab99ca;
+$spacing: 2rem;
+$dark-grey: #999;
+
+body {
+  box-sizing: border-box;
+  font-family: "Robot", Helvetica, sans-serif;
+  background-colod: #f2f2f2;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* $radius is the parameter of the function */
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+.card {
+  background-color: white;
+  width: 20rem;
+  overflow: hidden;
+  margin: 2rem;
+  @include border-radius(0.5rem);
+
+  img {
+    height: 15rem;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .card-content {
+    padding: $spacing;
+  }
+
+  .card-title {
+    font-size: 24px;
+  }
+
+  .card-description {
+    margin: 0;
+    color: $dark-grey;
+  }
+
+  .button {
+    background-color: #d9d900;
+    color: #fff;
+    padding: 0.8rem 0.9rem;
+    text-decoration: none;
+    margin-top: 1rem;
+    display: inline-block;
+
+    &:hover {
+      background-color: #4c8fb6;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+}
