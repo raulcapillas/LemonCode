@@ -1,17 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto");
 $fonts: "Roboto", Helvetica, sans-serif;
 $primary-color: #ab99ca;
-$spacing: 2rem;
+$spacing: 1rem;
+$margin: 2rem;
 $dark-grey: #999;
 
 body {
   box-sizing: border-box;
-  font-family: "Robot", Helvetica, sans-serif;
-  background-colod: #f2f2f2;
-}
-
-h3 {
-  font-size: 16px;
+  font-family: $fonts;
+  background-color: #f2f2f2;
 }
 
 @mixin flex-center {
@@ -32,7 +29,7 @@ h3 {
   background-color: white;
   width: 20rem;
   overflow: hidden;
-  margin: 2rem;
+  margin: $margin;
   @include border-radius(0.5rem);
 
   img {
@@ -42,11 +39,11 @@ h3 {
   }
 
   .card-content {
-    padding: $spacing;
+    padding: 0 1rem 1rem;
   }
 
   .card-title {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .card-description {
@@ -54,20 +51,30 @@ h3 {
     color: $dark-grey;
   }
 
-  .button {
-    background-color: #d9d900;
-    color: #fff;
-    padding: 0.8rem 0.9rem;
-    text-decoration: none;
-    margin-top: 1rem;
-    display: inline-block;
+  .card-publish {
+    display: flex;
+    align-items: center;
+    justify-content: right;
 
-    &:hover {
-      background-color: #4c8fb6;
+    span {
+      color: #10e690;
     }
   }
 
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .button {
+    background-color: #10e617;
+    color: #fff;
+    padding: 0.8rem 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+    @include flex-center;
+
+    &:hover {
+      background-color: #129cfe;
+    }
   }
 }
