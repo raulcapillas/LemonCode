@@ -1,0 +1,44 @@
+@import "./common.scss";
+
+
+$principal-font: "Roboto";
+$secondary-font: Helvetica;
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .base {
+    @include box-color(#fa2324);
+    @include box-size;
+    @include box-border-radius(0px);
+  }
+
+  .important {
+    @include box-color(#5f2324);
+    @include box-size;
+    @include box-border-radius(0px);
+  }
+
+  .warning {
+    @include box-color(#e597af);
+    @include box-size;
+    @include box-border-radius(0px);
+  }
+
+  .principal {
+    font-family: $principal-font;
+    margin: 8px;
+  }
+
+  .secondary {
+    font-family: $secondary-font;
+    margin: 8px;
+  }
+
+  .box {
+    @include box-color(#ffffff);
+    @include box-size;
+    @include box-shadow(-10px, 10px, 10px, 0px);
+  }
+}

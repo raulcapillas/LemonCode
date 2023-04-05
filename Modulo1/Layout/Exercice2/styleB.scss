@@ -1,0 +1,42 @@
+@import "./common.scss";
+$principal-font: serif;
+$secondary-font: serif;
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .base {
+    @include box-color(#0300F0);
+    @include box-size;
+    @include box-border-radius(4px);
+  }
+
+  .important {
+    @include box-color(#041761);
+    @include box-size;
+    @include box-border-radius(4px);
+  }
+
+  .warning {
+    @include box-color(#00F0F7);
+    @include box-size;
+    @include box-border-radius(4px);
+  }
+
+  .principal {
+    font-family: $principal-font;
+    margin: 8px;
+  }
+
+  .secondary {
+    font-family: $secondary-font;
+    margin: 8px;
+  }
+
+  .box {
+    @include box-color(#ffffff);
+    @include box-size;
+    @include box-shadow(10px, 10px, 10px, 0px);
+  }
+}
