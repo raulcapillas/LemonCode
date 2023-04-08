@@ -1,30 +1,36 @@
-$colors: red, blue, green;
-$color-red: #ff0000;
-$color-green: #00ff00;
-$color-blue: #0000ff;
+$color-red: #e60d00;
+$color-green: #00e62e;
+$color-blue: #0113e5;
 
-.color-box-text {
+@mixin text {
+  font-size: 16px;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+  justify-self: center;
 }
 
 .box {
   text-align: center;
-  border-radius: 5px; /* Mitad del ancho o alto del cuadrado */
-  padding: 20px;
+  border-radius: 5px;
+  padding-top: 2rem;
+  justify-self: stretch;
 }
 
 @for $j from 1 through 3 {
   .container-#{$j} {
     display: grid;
-    grid-template-columns: repeat(9, 1fr); /* Crear 9 columnas */
-    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 5rem) 7rem repeat(4, 5rem);
+    grid-template-rows: 5rem auto;
     column-gap: 5px;
-    row-gap: 15px;
+    row-gap: 5px;
 
     .base-color {
-      @extend .box;
-      color: #fff;
+      .color-box-text {
+        @include text;
+        color: white;
+      }
+
       @if $j == 1 {
-        background-color: $color-red;        
+        background-color: $color-red;
       }
       @elseif $j == 2 {
         background-color: $color-blue;
@@ -35,53 +41,50 @@ $color-blue: #0000ff;
 
     @for $i from 1 through 4 {
       .darken-#{$i} {
-        @extend .box;
         @if $j == 1 {
-          background-color: darken($color-red, 10% * $i);
+          background-color: darken($color-red, 5% * $i);
+          .color-box-text {
+            @include text;
+            color: #9DE7FC;
+          }
         }
         @elseif $j == 2 {
-          background-color: darken($color-blue, 10% * $i);
+          background-color: darken($color-blue, 5% * $i);
+          .color-box-text {
+            @include text;
+            color: #E3C154;
+          }
         } @else {
-          background-color: darken($color-green, 10% * $i);
+          background-color: darken($color-green, 5% * $i);
+          .color-box-text {
+            @include text;
+            color: #AB2BE3;
+          }
         }
       }
 
       .lighten-#{$i} {
-        @extend .box;
         @if $j == 1 {
-          background-color: lighten($color-red, 10% * $i);
+          background-color: lighten($color-red, 8% * $i);
+          .color-box-text {
+            @include text;
+            color: #9DE7FC;
+          }
         }
         @elseif $j == 2 {
-          background-color: lighten($color-blue, 10% * $i);
+          background-color: lighten($color-blue, 8% * $i);
+          .color-box-text {
+            @include text;
+            color: #E3C154;
+          }
         } @else {
-          background-color: lighten($color-green, 10% * $i);
+          background-color: lighten($color-green, 8% * $i);
+          .color-box-text {
+            @include text;
+            color: #AB2BE3;
+          }
         }
       }
     }
   }
 }
-
-
-
-// @for $i from 1 through 3 {
-//   @each $color in $colors {
-//     .container-#{$i} {
-//       display: flex;
-//       @for $i from 1 through 4 {
-//         .darken-#{$i} {
-//           @extend .box;
-//           background-color: darken($color, 10% * $i);
-//         }
-
-//         .lighten-#{$i} {
-//           @extend .box;
-//           background-color: lighten($color, 10% * $i);
-//         }
-//       }
-//     }
-//     .base-color {
-//       @extend .box;
-//       background-color: $color;
-//     }
-//   }
-// }

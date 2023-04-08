@@ -1,4 +1,5 @@
 @import "./common.scss";
+
 $principal-font: serif;
 $secondary-font: serif;
 
@@ -7,7 +8,7 @@ $secondary-font: serif;
   flex-direction: column;
 
   .base {
-    @include box-color(#0300F0);
+    @include box-color(#0300f0);
     @include box-size;
     @include box-border-radius(4px);
   }
@@ -19,7 +20,7 @@ $secondary-font: serif;
   }
 
   .warning {
-    @include box-color(#00F0F7);
+    @include box-color(#00f0f7);
     @include box-size;
     @include box-border-radius(4px);
   }
