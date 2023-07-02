@@ -12,3 +12,11 @@ export interface ListProperty {
   exist: boolean;
   cMembers: MemberEntity[];
 }
+
+export interface MemberDetailEntity {
+  id: string;
+  login: string;
+  name: string;
+  company: string;
+  bio: string;
+}

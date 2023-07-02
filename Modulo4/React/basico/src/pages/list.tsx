@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { DataGridComponent } from "../components/datagrid";
 import { NotFoundComponent } from "../components/notFound";
 import { MemberEntity } from "../constants/interfaces";
 import { getCompanyMembers } from "../services/github";
+import { useParams } from "react-router-dom";
 
 export const ListPage: React.FC = () => {
   const [members, setMembers] = useState<MemberEntity[]>([]);
@@ -43,7 +43,6 @@ export const ListPage: React.FC = () => {
       ) : (
         <NotFoundComponent />
       )}
-      <Link to="/detail">Navigate to detail page</Link>
     </>
   );
 };

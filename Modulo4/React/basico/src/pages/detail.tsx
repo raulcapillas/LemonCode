@@ -1,23 +1,11 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { createDefaultMemberDetail } from "../constants/constants";
+import { MemberDetailEntity } from "../constants/interfaces";
 
-interface MemberDetailEntity {
-  id: string;
-  login: string;
-  name: string;
-  company: string;
-  bio: string;
-}
-
-const createDefaultMemberDetail = () => ({
-  id: "",
-  login: "",
-  name: "",
-  company: "",
-  bio: "",
-});
 
 export const DetailPage: React.FC = () => {
+  const navigate = useNavigate();
   const [member, setMember] = React.useState<MemberDetailEntity>(
     createDefaultMemberDetail()
   );
@@ -38,7 +26,11 @@ export const DetailPage: React.FC = () => {
       <p> name: {member.name}</p>
       <p> company: {member.company}</p>
       <p> bio: {member.bio}</p>
-      <Link to="/list">Back to list page</Link>
+      <Link to={'..'}
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(-1);
+        }}>Back to list page</Link>
     </>
   );
 };
