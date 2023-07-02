@@ -3,7 +3,7 @@ import { DataGridComponent } from "../components/datagrid";
 import { NotFoundComponent } from "../components/notFound";
 import { MemberEntity } from "../constants/interfaces";
 import { getCompanyMembers } from "../services/github";
-import { useParams } from "react-router-dom";
+import { Button } from "@mui/material";
 
 export const ListPage: React.FC = () => {
   const [members, setMembers] = useState<MemberEntity[]>([]);
@@ -35,9 +35,9 @@ export const ListPage: React.FC = () => {
         onChange={handleChange}
         className="input"
       />
-      <button type="button" className="button" onClick={searchingCompany}>
+      <Button variant="outlined" sx={{margin: 1}} onClick={searchingCompany}>
         ¡Listar!
-      </button>
+      </Button>
       {existCompany ? (
         <DataGridComponent members={members} />
       ) : (
