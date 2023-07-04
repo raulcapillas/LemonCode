@@ -8,7 +8,7 @@ interface props {
   setAnimal: (animal: String) => void;
 }
 
-export const SelectorPage: React.FC<props> = ({setAnimal}) => {
+export const SelectorContainer: React.FC<props> = ({setAnimal}) => {
 
   const handle = (animal: string) => {
     setAnimal(animal);

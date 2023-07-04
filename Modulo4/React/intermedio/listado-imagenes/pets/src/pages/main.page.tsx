@@ -1,10 +1,10 @@
 import * as React from "react";
-import { SelectorPage } from "../components/selector";
-import { CartPage } from "../components/cart";
+import { SelectorContainer } from "../components/selector.container";
+import { CartContainer } from "../components/cart.container";
 import { kitties } from "../constants/constants";
-import { PuppiesPage } from "../components/puppies";
-import { KittiesPage } from "../components/kitties";
+import { PetsContainer } from "../components/pets.container";
 import { Box, Grid } from "@mui/material";
+import { kittiesList, puppiesList } from "../constants/constants";
 
 export const MainPage: React.FC = () => {
   const [animal, setAnimal] = React.useState<String>(kitties);
@@ -14,18 +14,18 @@ export const MainPage: React.FC = () => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid xs={12}>
-            <SelectorPage setAnimal={setAnimal}></SelectorPage>
+            <SelectorContainer setAnimal={setAnimal}></SelectorContainer>
           </Grid>
           <Grid xs={8}>
             {animal == kitties ? (
-              <KittiesPage></KittiesPage>
+              <PetsContainer pets={kittiesList} />
             ) : (
-              <PuppiesPage></PuppiesPage>
+              <PetsContainer pets={puppiesList} />
             )}
           </Grid>
 
           <Grid xs={4}>
-            <CartPage></CartPage>
+            <CartContainer></CartContainer>
           </Grid>
         </Grid>
       </Box>

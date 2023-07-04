@@ -1,12 +1,12 @@
 import React from "react";
 
-export const CartPage: React.FC = () => {
+export const CartContainer: React.FC = () => {
 
   React.useEffect(() => {}, []);
 
   return (
     <>
-      <h1>Carrito</h1>
+      <h1>Cart</h1>
     </>
   );
 };

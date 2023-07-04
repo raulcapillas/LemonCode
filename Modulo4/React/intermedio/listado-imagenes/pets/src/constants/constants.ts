@@ -16,7 +16,7 @@ export const menuImages = [
   },
 ];
 
-export const cats: PictureInfo[] = [
+export const kittiesList: PictureInfo[] = [
   {
     id: "1",
     picUrl: "https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg",
@@ -49,7 +49,7 @@ export const cats: PictureInfo[] = [
   },
 ];
 
-export const dogs: PictureInfo[] = [
+export const puppiesList: PictureInfo[] = [
   {
     id: "1",
     picUrl: "https://images.pexels.com/photos/5732474/pexels-photo-5732474.jpeg",
