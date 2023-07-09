@@ -2,14 +2,13 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { ImageBackdrop, ImageButton, ImageSrc, Image } from "./selector.style";
-import { kitties, menuImages, puppies } from "../constants/constants";
+import { menuImages } from "../../constants/constants";
 
 interface props {
-  setAnimal: (animal: String) => void;
+  setPet: (animal: string) => void;
 }
 
-export const SelectorContainer: React.FC<props> = ({setAnimal}) => {
-
+export const SelectorContainer: React.FC<props> = ({ setPet: setAnimal }) => {
   const handle = (animal: string) => {
     setAnimal(animal);
   };
