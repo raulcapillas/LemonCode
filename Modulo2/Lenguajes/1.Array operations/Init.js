@@ -6,3 +6,14 @@ const init = (array) => {
 };
 
 console.log(init(["First", "Second", "Third", "Fourth", "Fifth"]));
+
+// Corrections
+
+const arr = ["First", "Second", "Third", "Fourth", "Fifth"];
+
+const init2 = (array) => {
+  return array.slice(0, -1);
+};
+
+console.log(init2(arr));
+console.log(arr);
