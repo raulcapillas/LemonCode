@@ -1,5 +1,8 @@
 
 ng generate component utils/search
+ng g c utils/search
+
+ng g d 
 
 *********************************
 

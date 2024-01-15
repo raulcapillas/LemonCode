@@ -12,7 +12,6 @@ import { PrivateMenuComponent } from './layout/private-menu/private-menu.compone
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AboutComponent } from './pages/about/about.component';
-import { GaleryComponent } from './pages/galery/galery.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { GaleryComponent } from './pages/galery/galery.component';
     HomeComponent,
     LoginComponent,
     AboutComponent,
-    GaleryComponent
   ],
   imports: [
     BrowserModule,
