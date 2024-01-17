@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterOutlet } from '@angular/router';
-import { FooterComponent } from './layout/footer/footer.component';
-import { MenuComponent } from './layout/menu/menu.component';
 
 @Component({
   selector: 'app-root',
@@ -15,5 +13,4 @@ export class AppComponent {
   title = 'my-mini-app';
 
   constructor(private router: Router) {}
-
 }

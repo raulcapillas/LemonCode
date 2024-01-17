@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <ng-container *ngFor="let menu of publicMenu">
+    <a
+      mat-button
+      routerLink="{{ menu.link }}"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >{{ menu.title }}</a
+    >
+  </ng-container>
+</mat-toolbar>

@@ -30,6 +30,6 @@ export class AuthService {
   }
 
   public getUsername(): string {
-    return '';
+    return this.username;
   }
 }

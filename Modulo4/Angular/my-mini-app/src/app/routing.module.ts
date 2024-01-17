@@ -17,18 +17,34 @@ export const namesRoutes = {
   gallery: 'gallery',
   crud: 'crud',
   profile: 'profile',
-}
+};
 
 export const routes: Routes = [
   { path: namesRoutes.home, component: HomeComponent },
   { path: namesRoutes.login, component: LoginComponent },
-  { path: namesRoutes.about, component: AboutComponent},
-  { path: namesRoutes.dashboard, component: DashboardComponent, canActivate: [authGuard]},
-  { path: namesRoutes.gallery, component: GalleryComponent},
-  { path: namesRoutes.crud, component: CrudComponent},
-  { path: namesRoutes.profile, component: ProfileComponent},
+  { path: namesRoutes.about, component: AboutComponent },
+  {
+    path: namesRoutes.dashboard,
+    component: DashboardComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: namesRoutes.gallery,
+    component: GalleryComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: namesRoutes.crud,
+    component: CrudComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: namesRoutes.profile,
+    component: ProfileComponent,
+    canActivate: [authGuard],
+  },
   //{path: '**', component: PageNotFoundComponent}
-  { path: '',   redirectTo: `/${namesRoutes.home}`, pathMatch: 'full' },
+  { path: '', redirectTo: `/${namesRoutes.home}`, pathMatch: 'full' },
 ];
 
 @NgModule({

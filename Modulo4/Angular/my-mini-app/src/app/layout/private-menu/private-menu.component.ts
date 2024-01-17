@@ -18,11 +18,11 @@ import { AuthService } from '../../auth/auth.service';
     MatIconModule,
     CommonModule,
   ],
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.scss',
+  templateUrl: './private-menu.component.html',
+  styleUrl: './private-menu.component.scss',
 })
-export class MenuComponent {
-  title = 'My mini App';
+export class PrivateMenuComponent {
+  username = this._authService.getUsername();
   isLogged: boolean = false;
 
   publicMenu = [

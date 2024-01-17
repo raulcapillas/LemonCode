@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <ng-container *ngFor="let menu of privateMenu">
+    <a
+      mat-button
+      routerLink="{{ menu.link }}"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >{{ menu.title }}</a
+    >
+  </ng-container>
+  <span class="spacer"></span>
+  <span>{{ username }}</span>
+  <button mat-icon-button aria-label="Logout icon" (click)="logOut()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

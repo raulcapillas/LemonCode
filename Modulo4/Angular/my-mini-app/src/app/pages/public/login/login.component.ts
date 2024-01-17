@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { namesRoutes } from '../../../routing.module';
 import { FooterComponent } from '../../../layout/footer/footer.component';
-import { MenuComponent } from '../../../layout/menu/menu.component';
+import { PublicMenuComponent } from '../../../layout/public-menu/public-menu.component';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +26,7 @@ import { MenuComponent } from '../../../layout/menu/menu.component';
     MatButtonModule,
     MatListModule,
     FooterComponent,
-    MenuComponent,
+    PublicMenuComponent,
   ],
 })
 export class LoginComponent {
@@ -36,7 +36,7 @@ export class LoginComponent {
   public password = '';
 
   constructor(private _router: Router, private _authService: AuthService) {
-    if(this._authService.isLogged()) {
+    if (this._authService.isLogged()) {
       this._router.navigate(['/dashboard']);
     }
   }
