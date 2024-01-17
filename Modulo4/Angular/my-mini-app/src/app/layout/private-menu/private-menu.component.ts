@@ -8,7 +8,7 @@ import { namesRoutes } from '../../routing.module';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
-  selector: 'app-menu',
+  selector: 'private-menu',
   standalone: true,
   imports: [
     RouterLink,
