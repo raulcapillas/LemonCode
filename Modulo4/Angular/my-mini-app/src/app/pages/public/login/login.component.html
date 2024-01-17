@@ -1,21 +1,23 @@
 <mat-card>
+  <p>email: master[at]lemoncode.net</p>
+  <p>password: 12345678</p>
+</mat-card>
+<mat-card>
   <mat-card-content>
     <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
-      <h2>Log In</h2>
-      <mat-error *ngIf="!loginValid">
-        The username and password were not recognized
-      </mat-error>
+      <h1>LogIn</h1>
       <mat-form-field>
+        <mat-label>Email</mat-label>
         <input
           matInput
           placeholder="Email"
-          [(ngModel)]="username"
-          name="username"
+          [(ngModel)]="email"
+          name="email"
           required
         />
-        <mat-error> Please provide a valid email address </mat-error>
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Password</mat-label>
         <input
           matInput
           type="password"
@@ -24,7 +26,6 @@
           name="password"
           required
         />
-        <mat-error> Please provide a valid password </mat-error>
       </mat-form-field>
       <button
         mat-raised-button
@@ -33,6 +34,11 @@
       >
         Login
       </button>
+      <mat-error *ngIf="!loginValid">
+        El nombre de usuario y/o la contraseña son erroneas
+      </mat-error>
     </form>
   </mat-card-content>
 </mat-card>
+<br />
+{{ loginForm.value | json }}
