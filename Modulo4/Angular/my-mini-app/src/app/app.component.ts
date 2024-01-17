@@ -7,7 +7,7 @@ import { MenuComponent } from './layout/menu/menu.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FooterComponent, MenuComponent],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -16,7 +16,4 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
-  onLoginSuccess() {
-    //...
-  }
 }

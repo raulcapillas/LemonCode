@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { namesRoutes } from '../routing.module';
 
 @Injectable({
   providedIn: 'root',
@@ -21,10 +22,10 @@ export class AuthService {
 
   public logout(): void {
     this.isLoggedIn = false;
-    this._router.navigate(['/login']);
+    this._router.navigate([`/${namesRoutes.login}`]);
   }
 
-  private isLogged(): boolean {
+  public isLogged(): boolean {
     return this.isLoggedIn;
   }
 
