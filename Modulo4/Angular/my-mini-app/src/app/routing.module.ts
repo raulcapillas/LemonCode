@@ -7,7 +7,7 @@ import { DashboardComponent } from './pages/private/dashboard/dashboard.componen
 import { GalleryComponent } from './pages/private/gallery/gallery.component';
 import { CrudComponent } from './pages/private/crud/crud.component';
 import { ProfileComponent } from './pages/private/profile/profile.component';
-import { authGuard } from './auth/auth.guard';
+import { GuestAuthGuard, LoggedAuthGuard } from './auth/auth.guard';
 
 export const namesRoutes = {
   home: 'home',
@@ -20,28 +20,40 @@ export const namesRoutes = {
 };
 
 export const routes: Routes = [
-  { path: namesRoutes.home, component: HomeComponent },
-  { path: namesRoutes.login, component: LoginComponent },
-  { path: namesRoutes.about, component: AboutComponent },
+  {
+    path: namesRoutes.home,
+    component: HomeComponent,
+    canActivate: [LoggedAuthGuard],
+  },
+  {
+    path: namesRoutes.login,
+    component: LoginComponent,
+    canActivate: [LoggedAuthGuard],
+  },
+  {
+    path: namesRoutes.about,
+    component: AboutComponent,
+    canActivate: [LoggedAuthGuard],
+  },
   {
     path: namesRoutes.dashboard,
     component: DashboardComponent,
-    canActivate: [authGuard],
+    canActivate: [GuestAuthGuard],
   },
   {
     path: namesRoutes.gallery,
     component: GalleryComponent,
-    canActivate: [authGuard],
+    canActivate: [GuestAuthGuard],
   },
   {
     path: namesRoutes.crud,
     component: CrudComponent,
-    canActivate: [authGuard],
+    canActivate: [GuestAuthGuard],
   },
   {
     path: namesRoutes.profile,
     component: ProfileComponent,
-    canActivate: [authGuard],
+    canActivate: [GuestAuthGuard],
   },
   //{path: '**', component: PageNotFoundComponent}
   { path: '', redirectTo: `/${namesRoutes.home}`, pathMatch: 'full' },
