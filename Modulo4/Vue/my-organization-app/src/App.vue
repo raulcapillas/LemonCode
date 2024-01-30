@@ -12,5 +12,12 @@ import HomeView from "./views/HomeView.vue";
 
 export default defineComponent({
   components: { Header, HomeView },
+  name: "App",
+
+  data() {
+    return {
+      //
+    };
+  },
 });
 </script>
