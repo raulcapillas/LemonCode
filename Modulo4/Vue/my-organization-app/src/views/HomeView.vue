@@ -7,11 +7,10 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import ProductList from "../components/ProductList.vue";
-import EmployeeList from "../components/EmployeeList.vue";
+import EmployeeList from "../components/CompanyList.vue";
 
 export default defineComponent({
   name: "HomeView",
-  components: { ProductList, EmployeeList },
+  components: { EmployeeList },
 });
 </script>

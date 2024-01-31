@@ -1,20 +1,13 @@
-export interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
+export interface MemberEntity {
+  id: string;
+  login: string;
+  avatar_url: string;
 }
 
-export interface ProductService {
-  limit: number;
-  products: Product[];
-  skip: number;
-  total: number;
+export interface MemberDetailEntity {
+  id: string;
+  login: string;
+  name: string;
+  company: string;
+  bio: string;
 }
