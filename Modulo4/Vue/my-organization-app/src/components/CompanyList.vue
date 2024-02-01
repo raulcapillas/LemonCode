@@ -1,11 +1,30 @@
 <template>
-  <v-data-table :items="members" :headers="headers" class="elevation-1">
-    <template v-slot:items="props">
-      <td>{{ props.item.id }}</td>
-      <td class="text-xs-right">{{ props.item.login }}</td>
-      <td class="text-xs-right">{{ props.item.avatar_url }}</td>
-    </template>
-  </v-data-table>
+  <div>
+    <v-text-field
+      label="Company"
+      placeholder="lemoncode"
+      outline
+      v-model="company"
+      clearable
+    ></v-text-field>
+    <v-btn color="secondary" @click="search">Search</v-btn>
+    <v-table>
+      <thead>
+        <tr>
+          <th class="text-left">Id</th>
+          <th class="text-left">Name</th>
+          <th class="text-left">Avatar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in members" :key="item.id">
+          <td>{{ item.id }}</td>
+          <td>{{ item.login }}</td>
+          <td>{{ item.avatar_url }}</td>
+        </tr>
+      </tbody>
+    </v-table>
+  </div>
 </template>
 
 <script lang="ts">
@@ -29,10 +48,16 @@ export default defineComponent({
         },
       ],
       members: [] as MemberEntity[],
+      company: "lemoncode",
     };
   },
+  methods: {
+    async search() {
+      this.members = await getCompanyMembers.get(this.company);
+    },
+  },
   async created() {
-    this.members = await getCompanyMembers.get("lemoncode");
+    this.search();
   },
 });
 </script>

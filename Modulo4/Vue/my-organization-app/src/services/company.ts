@@ -12,7 +12,6 @@ export const getCompanyMembers = {
       .catch((err) => {
         console.error(err);
       });
-    console.log(companies);
     return companies;
   },
 };
