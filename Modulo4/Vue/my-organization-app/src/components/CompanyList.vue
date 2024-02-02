@@ -12,7 +12,7 @@
       <thead>
         <tr>
           <th v-for="item in headers" :key="item.value" class="text-left">
-            {{ item.text }}
+            <b>{{ item.text }}</b>
           </th>
         </tr>
       </thead>
@@ -25,10 +25,10 @@
           <td>{{ item.login }}</td>
           <td>
             <router-link
-              :to="{ name: 'Detail', params: { id: item.id } }"
+              :to="{ name: 'Detail', params: { id: item.login } }"
               id="button"
-              >Detail</router-link
-            >
+              ><v-btn icon="mdi-account" size="x-small"></v-btn
+            ></router-link>
           </td>
         </tr>
       </tbody>
@@ -49,6 +49,7 @@ export default defineComponent({
         { text: "Avatar", value: "avatar_url" },
         { text: "Id", value: "id" },
         { text: "Nombre", value: "login" },
+        { text: "Opciones", value: "options" },
       ],
       members: [] as MemberEntity[],
       company: "lemoncode",

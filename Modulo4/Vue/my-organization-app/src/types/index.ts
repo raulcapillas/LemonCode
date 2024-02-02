@@ -5,9 +5,13 @@ export interface MemberEntity {
 }
 
 export interface MemberDetailEntity {
-  id: string;
-  login: string;
+  member: MemberEntity;
   name: string;
   company: string;
+  email: string;
   bio: string;
+  followers: string;
+  following: string;
+  created_at: string;
+  updated_at: string;
 }
