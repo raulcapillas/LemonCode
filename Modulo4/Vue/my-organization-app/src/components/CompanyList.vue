@@ -11,16 +11,18 @@
     <v-table>
       <thead>
         <tr>
-          <th class="text-left">Id</th>
-          <th class="text-left">Name</th>
-          <th class="text-left">Avatar</th>
+          <th v-for="item in headers" :key="item.value" class="text-left">
+            {{ item.text }}
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in members" :key="item.id">
+          <td>
+            <v-avatar :image="`${item.avatar_url}`" size="80"></v-avatar>
+          </td>
           <td>{{ item.id }}</td>
           <td>{{ item.login }}</td>
-          <td>{{ item.avatar_url }}</td>
         </tr>
       </tbody>
     </v-table>
@@ -36,16 +38,9 @@ export default defineComponent({
   data() {
     return {
       headers: [
+        { text: "Avatar", value: "avatar_url" },
         { text: "Id", value: "id" },
         { text: "Nombre", value: "login" },
-        { text: "avatar_url", value: "avatar_url" },
-      ],
-      desserts: [
-        {
-          id: 1,
-          login: "Raul",
-          avatar_url: "dasd",
-        },
       ],
       members: [] as MemberEntity[],
       company: "lemoncode",

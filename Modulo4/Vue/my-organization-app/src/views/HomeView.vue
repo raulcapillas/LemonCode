@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <EmployeeList />
-    <ProductList />
   </div>
 </template>
 

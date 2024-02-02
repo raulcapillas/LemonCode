@@ -1,20 +1,19 @@
 <template>
-  <div id="app">
-    <HomeView />
+  <div>
+    <h1>Member Detail</h1>
+    <p>Name</p>
+    <p>Company: {{ company }}</p>
+    <p>Bio</p>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HomeView from "./views/HomeView.vue";
 
 export default defineComponent({
-  components: { HomeView },
-  name: "App",
-
   data() {
     return {
-      //
+      company: "lemoncode",
     };
   },
 });
