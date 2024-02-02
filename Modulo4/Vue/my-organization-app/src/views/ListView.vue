@@ -1,15 +1,15 @@
 <template>
   <div class="home">
-    <EmployeeList />
+    <CompanyList />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import EmployeeList from "../components/CompanyList.vue";
+import CompanyList from "../components/CompanyList.vue";
 
 export default defineComponent({
-  name: "HomeView",
-  components: { EmployeeList },
+  name: "ListView",
+  components: { CompanyList },
 });
 </script>

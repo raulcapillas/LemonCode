@@ -23,6 +23,13 @@
           </td>
           <td>{{ item.id }}</td>
           <td>{{ item.login }}</td>
+          <td>
+            <router-link
+              :to="{ name: 'Detail', params: { id: item.id } }"
+              id="button"
+              >Detail</router-link
+            >
+          </td>
         </tr>
       </tbody>
     </v-table>
@@ -35,6 +42,7 @@ import { getCompanyMembers } from "../services/company";
 import { MemberEntity } from "../types";
 
 export default defineComponent({
+  name: "CompanyList",
   data() {
     return {
       headers: [

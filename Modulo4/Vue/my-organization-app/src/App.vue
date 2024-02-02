@@ -1,21 +1,13 @@
 <template>
   <div id="app">
-    <HomeView />
+    <router-view />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HomeView from "./views/HomeView.vue";
 
 export default defineComponent({
-  components: { HomeView },
   name: "App",
-
-  data() {
-    return {
-      //
-    };
-  },
 });
 </script>
