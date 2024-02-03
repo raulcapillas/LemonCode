@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <router-link to="/" class="back"
-      >⬅️ Go {{ this.user.company }} List</router-link
-    >
+    <router-link to="/" class="back">⬅️ Go back</router-link>
     <v-card class="mx-auto" max-width="400" :title="`${this.user.name}`">
       <v-img :src="`${this.user.avatar_url}`" aspect-ratio="4/3" cover />
       <v-card-subtitle class="pt-4"
@@ -24,8 +22,6 @@
 import { defineComponent } from "vue";
 import { getMemberDetail } from "../services/company";
 import { MemberDetailEntity } from "../types";
-
-// const id = String((this.$route as RouteLocation).params.id);
 
 export default defineComponent({
   data() {

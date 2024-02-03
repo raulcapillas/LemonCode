@@ -8,6 +8,17 @@
       clearable
     ></v-text-field>
     <v-btn color="secondary" @click="search">Search</v-btn>
+    <div v-if="members.length === 0">
+      <v-snackbar
+        :timeout="3000"
+        color="red-lighten-1"
+        rounded="pill"
+        v-model="snackbar"
+        location="top"
+      >
+        {{ snackbar_text }}
+      </v-snackbar>
+    </div>
     <v-table>
       <thead>
         <tr>
@@ -53,11 +64,18 @@ export default defineComponent({
       ],
       members: [] as MemberEntity[],
       company: "lemoncode",
+      snackbar: false,
+      snackbar_text: "La compañia no existe o no tiene miembros",
     };
   },
   methods: {
     async search() {
       this.members = await getCompanyMembers.get(this.company);
+
+      if (this.members.length === 0) {
+        console.log(this.members);
+        this.snackbar = true;
+      }
     },
   },
   async created() {

@@ -3,7 +3,7 @@ import moment from "moment";
 
 export const getCompanyMembers = {
   async get(company: string): Promise<MemberEntity[]> {
-    const members = await fetch(
+    const members: MemberEntity[] = await fetch(
       `https://api.github.com/orgs/${company}/members`,
       {
         headers: { "Content-Type": "application/json" },
@@ -13,7 +13,7 @@ export const getCompanyMembers = {
       .catch((err) => {
         console.error(err);
       });
-    return members;
+    return members.length > 0 ? members : [];
   },
 };
 
