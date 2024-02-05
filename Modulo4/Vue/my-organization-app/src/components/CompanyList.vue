@@ -4,7 +4,7 @@
       label="Company"
       placeholder="Lemoncode"
       outline
-      v-model="company"
+      v-model="enterprise"
       @input="companyUpperCase"
       clearable
     ></v-text-field>
@@ -58,6 +58,7 @@ import { MemberEntity } from "../types";
 
 export default defineComponent({
   name: "company-list",
+  props: ["company"],
   data() {
     return {
       headers: [
@@ -70,26 +71,27 @@ export default defineComponent({
 
       snackbar: false,
       snackbar_text: "La compañia no existe o no tiene miembros",
-      company: "Lemoncode",
+      enterprise: this.company,
     };
   },
   methods: {
     async search() {
-      this.members = await getCompanyMembers.get(this.company);
+      this.members = await getCompanyMembers.get(this.enterprise);
 
       if (this.members.length === 0) {
         this.snackbar = true;
       }
     },
     companyUpperCase() {
-      if (this.company.length === 0) {
+      if (this.enterprise.length === 0) {
         return;
       }
-      this.company = this.company[0].toUpperCase() + this.company.slice(1);
+      const co = this.enterprise[0].toUpperCase() + this.enterprise.slice(1);
+      this.$emit("companyChanged", co);
+      this.enterprise = co;
     },
   },
   async created() {
-    this.company = "Lemoncode";
     this.search();
   },
 });

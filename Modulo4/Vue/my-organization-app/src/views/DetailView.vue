@@ -1,5 +1,5 @@
 <template>
-  <MemberDetail />
+  <MemberDetail :company="company" />
 </template>
 
 <script lang="ts">
@@ -9,5 +9,6 @@ import MemberDetail from "../components/MemberDetail.vue";
 export default defineComponent({
   name: "DetailView",
   components: { MemberDetail },
+  props: ["company"],
 });
 </script>
