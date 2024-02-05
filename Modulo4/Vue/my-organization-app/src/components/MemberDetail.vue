@@ -1,6 +1,8 @@
 <template>
-  <div class="container">
-    <router-link to="/" class="back">⬅️ Go back</router-link>
+  <div>
+    <router-link :to="{ name: 'Home' }" class="back" id="button">
+      <v-btn size="x-small"> ⬅️ Go {{ this.company }} list </v-btn>
+    </router-link>
     <v-card class="mx-auto" max-width="400" :title="`${this.user.name}`">
       <v-img :src="`${this.user.avatar_url}`" aspect-ratio="4/3" cover />
       <v-card-subtitle class="pt-4"
@@ -24,14 +26,17 @@ import { getMemberDetail } from "../services/company";
 import { MemberDetailEntity } from "../types";
 
 export default defineComponent({
+  name: "member-detail",
   data() {
     return {
       user: {} as MemberDetailEntity,
+      company: "" as string,
     };
   },
   methods: {},
   async created() {
-    this.user = await getMemberDetail.get(this.$route.params.id as string);
+    this.user = await getMemberDetail.get(this.$route.params.user as string);
+    this.company = this.$route.params.company as string;
   },
 });
 </script>

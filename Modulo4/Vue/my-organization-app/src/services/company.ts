@@ -18,8 +18,8 @@ export const getCompanyMembers = {
 };
 
 export const getMemberDetail = {
-  async get(login: string): Promise<MemberDetailEntity> {
-    const user = await fetch(`https://api.github.com/users/${login}`, {
+  async get(user: string): Promise<MemberDetailEntity> {
+    const member = await fetch(`https://api.github.com/users/${user}`, {
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
@@ -27,9 +27,9 @@ export const getMemberDetail = {
         console.error(err);
       });
     return {
-      ...user,
-      created_at: moment(String(user.created_at)).format("DD/MM/YYYY hh:mm"),
-      updated_at: moment(String(user.updated_at)).format("DD/MM/YYYY hh:mm"),
+      ...member,
+      created_at: moment(String(member.created_at)).format("DD/MM/YYYY hh:mm"),
+      updated_at: moment(String(member.updated_at)).format("DD/MM/YYYY hh:mm"),
     };
   },
 };

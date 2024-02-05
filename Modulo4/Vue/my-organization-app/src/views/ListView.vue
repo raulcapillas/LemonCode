@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    <CompanyList />
-  </div>
+  <CompanyList company="Lemoncode" />
 </template>
 
 <script lang="ts">

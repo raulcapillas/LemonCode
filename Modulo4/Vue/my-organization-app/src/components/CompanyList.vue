@@ -2,9 +2,10 @@
   <div>
     <v-text-field
       label="Company"
-      placeholder="lemoncode"
+      placeholder="Lemoncode"
       outline
       v-model="company"
+      @input="companyUpperCase"
       clearable
     ></v-text-field>
     <v-btn color="secondary" @click="search">Search</v-btn>
@@ -36,10 +37,13 @@
           <td>{{ item.login }}</td>
           <td>
             <router-link
-              :to="{ name: 'Detail', params: { id: item.login } }"
+              :to="{
+                name: 'Detail',
+                params: { company: company, user: item.login },
+              }"
               id="button"
-              ><v-btn icon="mdi-account" size="x-small"></v-btn
-            ></router-link>
+              ><v-btn icon="mdi-account" size="x-small" />
+            </router-link>
           </td>
         </tr>
       </tbody>
@@ -53,7 +57,7 @@ import { getCompanyMembers } from "../services/company";
 import { MemberEntity } from "../types";
 
 export default defineComponent({
-  name: "CompanyList",
+  name: "company-list",
   data() {
     return {
       headers: [
@@ -63,9 +67,10 @@ export default defineComponent({
         { text: "Opciones", value: "options" },
       ],
       members: [] as MemberEntity[],
-      company: "lemoncode",
+
       snackbar: false,
       snackbar_text: "La compañia no existe o no tiene miembros",
+      company: "Lemoncode",
     };
   },
   methods: {
@@ -73,12 +78,18 @@ export default defineComponent({
       this.members = await getCompanyMembers.get(this.company);
 
       if (this.members.length === 0) {
-        console.log(this.members);
         this.snackbar = true;
       }
     },
+    companyUpperCase() {
+      if (this.company.length === 0) {
+        return;
+      }
+      this.company = this.company[0].toUpperCase() + this.company.slice(1);
+    },
   },
   async created() {
+    this.company = "Lemoncode";
     this.search();
   },
 });
