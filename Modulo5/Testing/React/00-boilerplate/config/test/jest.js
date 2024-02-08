@@ -4,5 +4,5 @@ export default {
   preset: 'ts-jest',
   restoreMocks: true,
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/config/test/setup-after.ts'],
+  setupFilesAfterEnv: ['<rootDir>/config/test/setupAfterEnv.ts'],
 };
