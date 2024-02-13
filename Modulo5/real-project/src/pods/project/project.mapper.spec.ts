@@ -66,8 +66,10 @@ describe('project mapper specs', () => {
         },
       ],
     };
+    
     //  Act
     const result = mapProjectFromApiToVm(projectList);
+
     //  Assert
     expect(result).toEqual(expectedResult);
   });
@@ -115,7 +117,7 @@ describe('project mapper specs', () => {
 
     //  Act
     const result = mapProjectFromApiToVm(projectList);
-    
+
     //  Assert
     expect(result).toEqual(expectedResult);
   });
