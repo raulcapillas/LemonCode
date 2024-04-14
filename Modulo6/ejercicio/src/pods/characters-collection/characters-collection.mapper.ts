@@ -1,10 +1,11 @@
-import * as apiModel from "./api";
+import * as apiModel from "../characters/api";
+import * as apiCharacter from './api'
 import * as viewModel from "./characters-collection.vm";
 
 export const mapFromApiToVm = (
-  characters: apiModel.CharacterCollection
+  characters: apiCharacter.CharacterCollection
 ): viewModel.CharactersEntityVm[] => {
-  return characters.results.map((character: apiModel.CharacterResult) => ({
+  return characters.results.map((character: apiModel.Character) => ({
     id: character.id,
     name: character.name,
     status: character.status,
