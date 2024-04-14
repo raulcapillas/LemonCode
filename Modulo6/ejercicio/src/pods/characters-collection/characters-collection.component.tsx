@@ -1,9 +1,9 @@
 import React from "react";
-import { CharactersEntityVm } from "./characters-collection.vm";
+import { CharactersCollectionVm } from "./characters-collection.vm";
 import { CharactersTableComponent } from "./components/characters-table.component";
 
 interface Props {
-  charactersCollection: CharactersEntityVm[];
+  charactersCollection: CharactersCollectionVm;
 }
 
 export const CharactersCollectionComponent: React.FC<Props> = (Props) => {
@@ -11,10 +11,9 @@ export const CharactersCollectionComponent: React.FC<Props> = (Props) => {
 
   return (
     <>
-      <CharactersTableComponent></CharactersTableComponent>
-      {charactersCollection.map((character) => {
-        return <p>{character.name}</p>;
-      })}
+      <CharactersTableComponent
+        character={charactersCollection}
+      ></CharactersTableComponent>
     </>
   );
 };
