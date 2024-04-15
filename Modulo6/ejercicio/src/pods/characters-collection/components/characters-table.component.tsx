@@ -9,20 +9,19 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { CharactersCollectionVm } from "../characters-collection.vm";
 import { Avatar } from "@mui/material";
+import { useCharactersCollection } from "../characters-collection.hook";
 
 interface Column {
   id: "name" | "status" | "gender" | "image";
   label: string;
   minWidth?: number;
   align?: "right";
-  format?: (value: string) => ReactNode;
+  format?: (value: string, name: string) => ReactNode;
 }
 
-const format = (value: string) => {
+const format = (value: string, name: string) => {
   if (value) {
-    return (
-      <Avatar alt="Remy Sharp" src={value} sx={{ width: 56, height: 56 }} />
-    );
+    return <Avatar alt={name} src={value} sx={{ width: 56, height: 56 }} />;
   }
 };
 
@@ -35,26 +34,18 @@ const columns: readonly Column[] = [
 
 interface Props {
   character: CharactersCollectionVm;
+  handleChangePage: (event: unknown, newPage: number) => void;
+  page: number;
 }
 
-export const CharactersTableComponent: React.FC<Props> = ({ character }) => {
-  const [page, setPage] = React.useState<number>(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-  const handleChangePage = (event: unknown, newPage: number) => {
-    // TODO: Implementar la paginación
-  };
-
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
+export const CharactersTableComponent: React.FC<Props> = ({
+  character,
+  handleChangePage,
+  page,
+}) => {
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <TableContainer>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -71,33 +62,32 @@ export const CharactersTableComponent: React.FC<Props> = ({ character }) => {
           </TableHead>
           <TableBody>
             {character.count > 0 &&
-              character.charactersList
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => {
-                  return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                      {columns.map((column) => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.format ? column.format(value) : value}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  );
-                })}
+              character.charactersList.map((row) => {
+                return (
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                    {columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format
+                            ? column.format(value, row.name)
+                            : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[]}
         component="div"
         count={character.count}
-        rowsPerPage={rowsPerPage}
+        rowsPerPage={character.charactersList.length}
         page={page}
         onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
   );

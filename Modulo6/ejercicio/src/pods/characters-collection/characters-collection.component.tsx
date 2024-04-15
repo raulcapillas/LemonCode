@@ -1,19 +1,25 @@
 import React from "react";
-import { CharactersCollectionVm } from "./characters-collection.vm";
 import { CharactersTableComponent } from "./components/characters-table.component";
+import { useCharactersCollection } from "./characters-collection.hook";
 
-interface Props {
-  charactersCollection: CharactersCollectionVm;
-}
+export const CharactersCollectionComponent: React.FC = () => {
+  const [page, setPage] = React.useState<number>(0);
+  const { charactersCollection, loadCharactersCollection } =
+    useCharactersCollection();
 
-export const CharactersCollectionComponent: React.FC<Props> = (Props) => {
-  const { charactersCollection } = Props;
+  React.useEffect(() => loadCharactersCollection(page + 1), [page]);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
 
   return (
     <>
       <CharactersTableComponent
         character={charactersCollection}
-      ></CharactersTableComponent>
+        handleChangePage={handleChangePage}
+        page={page}
+      />
     </>
   );
 };
