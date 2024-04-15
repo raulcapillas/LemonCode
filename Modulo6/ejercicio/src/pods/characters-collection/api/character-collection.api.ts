@@ -5,6 +5,7 @@ import { CHARACTER_COLLECTION_MOCK } from "./character-collection.mock";
 
 export const getCharactersCollection = (): Promise<CharacterCollection> => {
   return axios.get(`${BASE_URL}/character`).then((response) => {
+    console.log(response.data);
     return response.data;
   }).catch((error) => {
     console.log(error);

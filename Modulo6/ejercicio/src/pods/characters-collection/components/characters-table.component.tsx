@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,17 +7,27 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { CharactersCollectionVm, CharactersEntityVm } from "../characters-collection.vm";
+import { CharactersCollectionVm } from "../characters-collection.vm";
+import { Avatar } from "@mui/material";
 
 interface Column {
   id: "name" | "status" | "gender" | "image";
   label: string;
   minWidth?: number;
   align?: "right";
+  format?: (value: string) => ReactNode;
 }
 
+const format = (value: string) => {
+  if (value) {
+    return (
+      <Avatar alt="Remy Sharp" src={value} sx={{ width: 56, height: 56 }} />
+    );
+  }
+};
+
 const columns: readonly Column[] = [
-  { id: "image", label: "Picture", minWidth: 170 },
+  { id: "image", label: "Picture", minWidth: 100, format },
   { id: "name", label: "Name", minWidth: 170 },
   { id: "status", label: "Status", minWidth: 100 },
   { id: "gender", label: "Gender", minWidth: 100 },
@@ -60,22 +70,23 @@ export const CharactersTableComponent: React.FC<Props> = ({ character }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {character.charactersList
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
+            {character.count > 0 &&
+              character.charactersList
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => {
+                  return (
+                    <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                      {columns.map((column) => {
+                        const value = row[column.id];
+                        return (
+                          <TableCell key={column.id} align={column.align}>
+                            {column.format ? column.format(value) : value}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                })}
           </TableBody>
         </Table>
       </TableContainer>
