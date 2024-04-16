@@ -7,46 +7,66 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { CharactersCollectionVm } from "../characters-collection.vm";
+import {
+  CharactersCollectionVm,
+  CharactersEntityVm,
+} from "../characters-collection.vm";
 import { Avatar } from "@mui/material";
-import { useCharactersCollection } from "../characters-collection.hook";
+import { Link } from "react-router-dom";
 
 interface Column {
-  id: "name" | "status" | "gender" | "image";
+  id: "name" | "status" | "gender" | "image" | "action";
   label: string;
   minWidth?: number;
   align?: "right";
-  format?: (value: string, name: string) => ReactNode;
+  action?: (
+    action: "avatar" | "detail",
+    value: string,
+    name: string
+  ) => ReactNode;
 }
 
-const format = (value: string, name: string) => {
-  if (value) {
-    return <Avatar alt={name} src={value} sx={{ width: 56, height: 56 }} />;
-  }
+const action = (value: string, name: string) => {
+  return <Avatar alt={name} src={value} sx={{ width: 56, height: 56 }} />;
 };
 
 const columns: readonly Column[] = [
-  { id: "image", label: "Picture", minWidth: 100, format },
+  { id: "image", label: "Picture", minWidth: 100, action },
   { id: "name", label: "Name", minWidth: 170 },
   { id: "status", label: "Status", minWidth: 100 },
   { id: "gender", label: "Gender", minWidth: 100 },
+  { id: "action", label: "Action", minWidth: 50, action },
 ];
 
 interface Props {
   character: CharactersCollectionVm;
   handleChangePage: (event: unknown, newPage: number) => void;
   page: number;
+  tableRef: React.RefObject<HTMLTableElement>;
 }
 
 export const CharactersTableComponent: React.FC<Props> = ({
   character,
   handleChangePage,
   page,
+  tableRef,
 }) => {
+  const handleRow = (column: Column, row: CharactersEntityVm) => {
+    if (column.id === "image") {
+      return (
+        <Avatar alt={row.name} src={row.image} sx={{ width: 56, height: 56 }} />
+      );
+    }
+    if (column.id === "action") {
+      return <Link to={row.url}>Detail</Link>;
+    }
+    return row[column.id];
+  };
+
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer>
-        <Table stickyHeader aria-label="sticky table">
+        <Table ref={tableRef} stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -64,14 +84,11 @@ export const CharactersTableComponent: React.FC<Props> = ({
             {character.count > 0 &&
               character.charactersList.map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                  <TableRow hover tabIndex={-1} key={row.id}>
                     {columns.map((column) => {
-                      const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format
-                            ? column.format(value, row.name)
-                            : value}
+                          {handleRow(column, row)}
                         </TableCell>
                       );
                     })}
