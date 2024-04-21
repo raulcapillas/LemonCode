@@ -1,16 +1,15 @@
 import React from "react";
 import { Character, getCharacter } from "./api";
+import { useParams } from "react-router-dom";
 
-interface Props {
-    characterId: number;
-}
-
-export const CharacterContainer: React.FC<Props> = ({characterId}) => {
+export const CharacterContainer: React.FC = () => {
 
     const [character, setCharacter] = React.useState<Character | null>(null);
 
+    const { id } = useParams();
+
     React.useEffect(() => {
-        getCharacter(characterId).then((character) => {
+        getCharacter(+id).then((character) => {
             setCharacter(character);
         });;
     }, []);

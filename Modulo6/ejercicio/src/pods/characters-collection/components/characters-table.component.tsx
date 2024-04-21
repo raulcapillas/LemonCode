@@ -12,6 +12,7 @@ import {
   CharactersEntityVm,
 } from "../characters-collection.vm";
 import { Avatar } from "@mui/material";
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { Link } from "react-router-dom";
 
 interface Column {
@@ -58,7 +59,11 @@ export const CharactersTableComponent: React.FC<Props> = ({
       );
     }
     if (column.id === "action") {
-      return <Link to={row.url}>Detail</Link>;
+      return (
+        <Link to={`/character/${row.id}`} target="_blank">
+          <InfoOutlinedIcon />
+        </Link>
+      );
     }
     return row[column.id];
   };
