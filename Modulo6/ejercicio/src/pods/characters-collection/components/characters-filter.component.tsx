@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { Paper } from "@mui/material";
 import SearchBar from "material-ui-search-bar";
-import { useCharacter } from "../../../hooks/character.context";
+import { useCharacter } from "hooks/character-collection/character-collection.context";
 
 export const CharactersFilterContainer: FC = () => {
   const [searched, setSearched] = useState<string>("");

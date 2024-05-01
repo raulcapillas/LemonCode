@@ -13,7 +13,7 @@ import { CharactersEntityVm } from "../characters-collection.vm";
 import { Avatar } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Link } from "react-router-dom";
-import { useCharacter } from "../../../hooks/character.context";
+import { useCharacter } from "hooks/character-collection/character-collection.context";
 
 interface Column {
   id: "name" | "status" | "gender" | "image" | "action";

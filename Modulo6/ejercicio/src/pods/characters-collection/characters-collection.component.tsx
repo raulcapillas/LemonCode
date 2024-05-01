@@ -1,7 +1,7 @@
 import React from "react";
 import { CharactersTableComponent } from "./components/characters-table.component";
 import { CharactersFilterContainer } from "./components/characters-filter.component";
-import { useCharacter } from "../../hooks/character.context";
+import { useCharacter } from "hooks/character-collection/character-collection.context";
 import { CharacterCollection, getCharactersCollection } from "./api";
 import { mapFromApiToVm } from "./characters-collection.mapper";
 
@@ -28,7 +28,7 @@ export const CharactersCollectionComponent: React.FC = () => {
 
   return (
     <>
-      <CharactersFilterContainer/>
+      <CharactersFilterContainer />
       <CharactersTableComponent
         handleChangePage={handleChangePage}
         page={page}
