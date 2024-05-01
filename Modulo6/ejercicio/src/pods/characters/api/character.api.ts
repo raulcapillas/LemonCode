@@ -4,7 +4,7 @@ import { DEFAULT_CHARACTER } from "../character.constants";
 
 export const getCharacter = (characterID: number): Promise<Character> => {
   return axios
-    .get(`https://rickandmortyapi.com/api/chsaracter/${characterID}`)
+    .get(`https://rickandmortyapi.com/api/character/${characterID}`)
     .then((response) => {
       return response.data;
     });

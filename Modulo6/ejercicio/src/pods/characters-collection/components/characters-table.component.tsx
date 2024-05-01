@@ -1,19 +1,19 @@
 import React, { ReactNode } from "react";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
 import {
-  CharactersCollectionVm,
-  CharactersEntityVm,
-} from "../characters-collection.vm";
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
+import { CharactersEntityVm } from "../characters-collection.vm";
 import { Avatar } from "@mui/material";
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Link } from "react-router-dom";
+import { useCharacter } from "../../../hooks/character.context";
 
 interface Column {
   id: "name" | "status" | "gender" | "image" | "action";
@@ -40,18 +40,18 @@ const columns: readonly Column[] = [
 ];
 
 interface Props {
-  character: CharactersCollectionVm;
   handleChangePage: (event: unknown, newPage: number) => void;
   page: number;
   tableRef: React.RefObject<HTMLTableElement>;
 }
 
 export const CharactersTableComponent: React.FC<Props> = ({
-  character,
   handleChangePage,
   page,
   tableRef,
 }) => {
+  const { charactersCollection } = useCharacter();
+
   const handleRow = (column: Column, row: CharactersEntityVm) => {
     if (column.id === "image") {
       return (
@@ -86,8 +86,8 @@ export const CharactersTableComponent: React.FC<Props> = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {character.count > 0 &&
-              character.charactersList.map((row) => {
+            {charactersCollection.count > 0 &&
+              charactersCollection.charactersList.map((row) => {
                 return (
                   <TableRow hover tabIndex={-1} key={row.id}>
                     {columns.map((column) => {
@@ -106,8 +106,8 @@ export const CharactersTableComponent: React.FC<Props> = ({
       <TablePagination
         rowsPerPageOptions={[]}
         component="div"
-        count={character.count}
-        rowsPerPage={character.charactersList.length}
+        count={charactersCollection.count}
+        rowsPerPage={charactersCollection.charactersList.length}
         page={page}
         onPageChange={handleChangePage}
       />
