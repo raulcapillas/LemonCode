@@ -7,7 +7,7 @@ const fetchCharacterCollection = (
   params: Record<string, any>
 ): Promise<CharacterCollection> => {
   const queryParams = new URLSearchParams(params).toString();
-  const url = `${BASE_URL}/character${queryParams ? `?${queryParams}` : ""}`;
+  const url = `${BASE_URL}${queryParams ? `?${queryParams}` : ""}`;
 
   return axios
     .get(url)

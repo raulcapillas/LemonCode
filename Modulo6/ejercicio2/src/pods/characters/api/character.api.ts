@@ -1,10 +1,10 @@
 import axios from "axios";
 import { Character } from "./character.api-model";
-import { DEFAULT_CHARACTER } from "../character.constants";
+import { BASE_URL } from "common/constants/constans";
 
 export const getCharacter = (characterID: number): Promise<Character> => {
   return axios
-    .get(`https://rickandmortyapi.com/api/character/${characterID}`)
+    .get(`${BASE_URL}/${characterID}`)
     .then((response) => {
       return response.data;
     });
