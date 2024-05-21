@@ -6,7 +6,6 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TablePagination,
   TableRow,
 } from "@mui/material";
 import { CharactersEntityVm } from "../characters-collection.vm";
@@ -40,16 +39,10 @@ const columns: readonly Column[] = [
 ];
 
 interface Props {
-  handleChangePage: (event: unknown, newPage: number) => void;
-  page: number;
   tableRef: React.RefObject<HTMLTableElement>;
 }
 
-export const CharactersTableComponent: React.FC<Props> = ({
-  handleChangePage,
-  page,
-  tableRef,
-}) => {
+export const CharactersTableComponent: React.FC<Props> = ({ tableRef }) => {
   const { charactersCollection } = useCharacter();
 
   const handleRow = (column: Column, row: CharactersEntityVm) => {
@@ -103,14 +96,6 @@ export const CharactersTableComponent: React.FC<Props> = ({
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[]}
-        component="div"
-        count={charactersCollection.count}
-        rowsPerPage={charactersCollection.charactersList.length}
-        page={page}
-        onPageChange={handleChangePage}
-      />
     </Paper>
   );
 };

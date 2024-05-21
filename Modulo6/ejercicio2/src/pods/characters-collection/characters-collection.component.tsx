@@ -1,8 +1,6 @@
 import React from "react";
 import { CharactersTableComponent } from "./components/characters-table.component";
-import { CharactersFilterContainer } from "./components/characters-filter.component";
 import { useCharacter } from "hooks/character-collection/character-collection.context";
-import { Divider } from "@mui/material";
 import { useCharactersCollection } from "./character-collection.hook";
 
 export const CharactersCollectionComponent: React.FC = () => {
@@ -20,20 +18,5 @@ export const CharactersCollectionComponent: React.FC = () => {
     loadCharactersCollection({ page: startPage, name });
   }, [page, name]);
 
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-    tableRef.current?.scrollIntoView(); // Go to the top of the table
-  };
-
-  return (
-    <>
-      <CharactersFilterContainer name={name} setName={setName} />
-      <Divider>&nbsp;</Divider>
-      <CharactersTableComponent
-        handleChangePage={handleChangePage}
-        page={page}
-        tableRef={tableRef}
-      />
-    </>
-  );
+  return <CharactersTableComponent tableRef={tableRef} />;
 };
