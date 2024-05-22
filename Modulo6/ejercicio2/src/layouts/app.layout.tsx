@@ -1,9 +1,6 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import * as classes from "./app.layout.styles";
+import { Typography, Toolbar, IconButton, AppBar } from "@mui/material";
 
 interface Props {
   children: React.ReactNode;
@@ -24,6 +21,9 @@ export const AppLayout: React.FC<Props> = (props) => {
               alt="Rick and Morty"
             />
           </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            JSON Server edition
+          </Typography>
         </Toolbar>
       </AppBar>
       <main className={classes.content}>{children}</main>
