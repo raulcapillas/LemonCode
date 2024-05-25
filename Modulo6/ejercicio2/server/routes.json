@@ -1,5 +1,3 @@
 {
-    "/api/character": "/results",
-    "/api/character/:id": "/results/:id",
-    "/api/character/:id/scentences": "/results/:id/scentences"
-  }
+  "/api/*": "/$1"
+}

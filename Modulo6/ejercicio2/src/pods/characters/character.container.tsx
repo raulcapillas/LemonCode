@@ -1,11 +1,13 @@
 import React from "react";
-import { Character, getCharacter } from "./api";
+import { Character, saveScentences, getCharacter, scentences } from "./api";
 import { useParams } from "react-router-dom";
 import { CharacterComponent } from "./character.component";
 import { DEFAULT_CHARACTER } from "./character.constants";
 import { BestScentencesComponent } from "./best-scenteces.component";
 import * as classes from "./character.style";
-import { Divider, Typography } from "@mui/material";
+import { Divider } from "@mui/material";
+import { deleteBestScentencesById } from "./character.business";
+import { v4 as uuidv4 } from 'uuid';
 
 export const CharacterContainer: React.FC = () => {
   const [character, setCharacter] =
@@ -24,12 +26,32 @@ export const CharacterContainer: React.FC = () => {
       });
   }, []);
 
+  const addNewScentence = (scenteces: string) => {
+    const newBestScentences: scentences = {
+      id: uuidv4(),
+      text: scenteces,
+    };
+
+    const updateCharacter = {
+      ...character,
+      scentences: [...character.scentences, newBestScentences],
+    };
+
+    setCharacter(updateCharacter);
+    saveScentences(updateCharacter);
+  };
+
+  const deleteScentenceById = (id: string) => {
+    const newBestScentences = deleteBestScentencesById(id, character.scentences);
+    setCharacter({ ...character, scentences: newBestScentences });
+    saveScentences({ ...character, scentences: newBestScentences });
+  }
+
   return (
     <div className={classes.content}>
-      <Divider><Typography variant="h5">{`${character.name} (${character.status})`}</Typography></Divider>
-      <BestScentencesComponent />
+      <BestScentencesComponent addNewScentence={addNewScentence} />
       <Divider>&nbsp;</Divider>
-      <CharacterComponent character={character}></CharacterComponent>
+      <CharacterComponent character={character} deleteScentenceById={deleteScentenceById}></CharacterComponent>
     </div>
   );
 };

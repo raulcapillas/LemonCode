@@ -14,7 +14,7 @@ module.exports = merge(base, {
   devServer: {
     hot: true,
     proxy: {
-      '/api/characters': 'http://localhost:3000',
+      '/api': 'http://localhost:3000',
     },
   },
   module: {

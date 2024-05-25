@@ -16,6 +16,7 @@ export const DEFAULT_CHARACTER: Character = {
         url: ""
     },
     image: "",
+    scentences: [],
     episode: [],
     url: "",
     created: ""

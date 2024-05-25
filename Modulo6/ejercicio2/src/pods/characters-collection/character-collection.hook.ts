@@ -5,8 +5,8 @@ import { CharactersCollectionVm } from "./characters-collection.vm";
 export const useCharactersCollection = (
   setCharactersCollection: (character: CharactersCollectionVm) => void
 ) => {
-  const loadCharactersCollection = (params: Record<string, any>) => {
-    getCharactersCollection(params)
+  const loadCharactersCollection = () => {
+    getCharactersCollection()
       .then((data: CharacterCollection) => {
         setCharactersCollection(mapFromApiToVm(data));
       })
