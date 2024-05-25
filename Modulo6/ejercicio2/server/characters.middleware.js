@@ -1,17 +1,10 @@
-const hotelMiddleware = (req, res, next) => {
+const characterMiddleware = (req, res, next) => {
   if (req.method === "POST") {
-    req.body = {
-      ...req.body,
-      thumbNailUrl: "/thumbnails/new-hotel.jpg",
-    };
+    console.log(`${req.method} ${req.url}`);
   }
   next();
 };
 
 module.exports = (req, res, next) => {
-  if (req.path === "/character") {
-    hotelMiddleware(req, res, next);
-  } else {
-    next();
-  }
+  characterMiddleware(req, res, next);
 };
