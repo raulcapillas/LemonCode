@@ -1,6 +1,7 @@
 import * as React from "react";
 import { TextField, Button } from "@mui/material";
 import * as classes from "./character.style";
+import { useBestScentences } from "hooks";
 
 interface Props {
   addNewScentence: (value: string) => void;
@@ -9,7 +10,7 @@ interface Props {
 export const BestScentencesComponent: React.FC<Props> = ({
   addNewScentence: handleBestScentences,
 }) => {
-  const [bestScentences, setBestScentences] = React.useState<string>("");
+  const { bestScentences, setBestScentences } = useBestScentences();
 
   const handleOnClick = (newBestScentences: string) => {
     handleBestScentences(newBestScentences);

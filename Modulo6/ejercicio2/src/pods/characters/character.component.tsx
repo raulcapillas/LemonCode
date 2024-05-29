@@ -9,22 +9,28 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
-import { Character } from "./api";
+import { Character, scentence } from "./api";
 import * as classes from "./character.style";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
+import { useBestScentences } from "hooks";
 
 interface CharacterProps {
   character: Character;
   deleteScentenceById: (id: string) => void;
-  modifyScentenceById: (id: string) => void;
 }
 
 export const CharacterComponent: React.FC<CharacterProps> = ({
   character,
   deleteScentenceById,
-  modifyScentenceById,
 }) => {
+  const { setBestScentences } = useBestScentences();
+
+  const editScentenceById = (scentence: scentence) => {
+    setBestScentences(scentence.text);
+    deleteScentenceById(scentence.id);
+  };
+
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -54,17 +60,17 @@ export const CharacterComponent: React.FC<CharacterProps> = ({
         <Typography variant="body2">
           <Typography variant="h6">Best scentences: </Typography>
           <List dense>
-            {character.scentences.map((charScentences) => {
+            {character.scentences.map((scentence) => {
               return (
-                <ListItem key={charScentences.id}>
-                  <ListItemText primary={charScentences.text} />
+                <ListItem key={scentence.id}>
+                  <ListItemText primary={scentence.text} />
                   <IconButton
-                    onClick={() => deleteScentenceById(charScentences.id)}
+                    onClick={() => deleteScentenceById(scentence.id)}
                   >
                     <DeleteIcon />
                   </IconButton>
                   <IconButton
-                    onClick={() => modifyScentenceById(charScentences.id)}
+                    onClick={() => editScentenceById(scentence)}
                   >
                     <ChangeCircleIcon />
                   </IconButton>

@@ -1,4 +1,4 @@
-import React, { FC, createContext, useContext, useState } from "react";
+import React, { FC, useState } from "react";
 import { DEFAULT_CHARACTERS_COLLECTION } from "common/constants/constans";
 import { CharactersCollectionVm } from "pods/characters-collection/characters-collection.vm";
 import { CharacterContext } from "./character-collection.context";

@@ -14,13 +14,13 @@ export interface Character {
         url: string;
     },
     image: string;
-    scentences: scentences[];
+    scentences: scentence[];
     episode: string[];
     url: string;
     created: string;
 }
 
-export interface scentences {
+export interface scentence {
     id: string;
     text: string;
 }

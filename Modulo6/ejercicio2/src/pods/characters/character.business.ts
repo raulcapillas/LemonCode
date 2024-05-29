@@ -1,8 +1,8 @@
-import { scentences } from "./api";
+import { scentence } from "./api";
 
 export const deleteBestScentencesById = (
   id: string,
-  bestScentences: scentences[]
+  bestScentences: scentence[]
 ) => {
-  return bestScentences.filter((scentence: scentences) => scentence.id !== id);
+  return bestScentences.filter((scentence: scentence) => scentence.id !== id);
 };

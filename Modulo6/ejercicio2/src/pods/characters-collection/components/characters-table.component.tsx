@@ -7,9 +7,9 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Avatar,
 } from "@mui/material";
 import { CharactersEntityVm } from "../characters-collection.vm";
-import { Avatar } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Link } from "react-router-dom";
 import { useCharacter } from "hooks/character-collection/character-collection.context";
