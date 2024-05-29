@@ -47,11 +47,15 @@ export const CharacterContainer: React.FC = () => {
     saveScentences({ ...character, scentences: newBestScentences });
   }
 
+  const modifyScentenceById = (id: string) => {
+    // GET BestSencente and put the value on input text
+  }
+
   return (
     <div className={classes.content}>
       <BestScentencesComponent addNewScentence={addNewScentence} />
       <Divider>&nbsp;</Divider>
-      <CharacterComponent character={character} deleteScentenceById={deleteScentenceById}></CharacterComponent>
+      <CharacterComponent character={character} deleteScentenceById={deleteScentenceById} modifyScentenceById={modifyScentenceById}></CharacterComponent>
     </div>
   );
 };

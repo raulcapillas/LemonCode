@@ -9,17 +9,22 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
-import { Character, saveScentences } from "./api";
+import { Character } from "./api";
 import * as classes from "./character.style";
-import DeleteIcon from '@mui/icons-material/Delete';
-import { deleteBestScentencesById } from "./character.business";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 
 interface CharacterProps {
   character: Character;
   deleteScentenceById: (id: string) => void;
+  modifyScentenceById: (id: string) => void;
 }
 
-export const CharacterComponent: React.FC<CharacterProps> = ({ character, deleteScentenceById }) => {
+export const CharacterComponent: React.FC<CharacterProps> = ({
+  character,
+  deleteScentenceById,
+  modifyScentenceById,
+}) => {
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -30,7 +35,7 @@ export const CharacterComponent: React.FC<CharacterProps> = ({ character, delete
       />
       <CardContent>
         <Typography variant="body2">
-        <Typography variant="h5">{`${character.name} (${character.status})`}</Typography>
+          <Typography variant="h5">{`${character.name} (${character.status})`}</Typography>
           <List dense>
             <ListItem>
               <ListItemText primary={`Species: ${character.species}`} />
@@ -49,18 +54,23 @@ export const CharacterComponent: React.FC<CharacterProps> = ({ character, delete
         <Typography variant="body2">
           <Typography variant="h6">Best scentences: </Typography>
           <List dense>
-            {
-              character.scentences.map((charScentences) => {
-                return (
-                  <ListItem key={charScentences.id}>
-                    <ListItemText primary={charScentences.text} />
-                    <IconButton onClick={() => deleteScentenceById(charScentences.id)}>
-                      <DeleteIcon />
-                    </IconButton>
-                  </ListItem>
-                )
-              })
-            }
+            {character.scentences.map((charScentences) => {
+              return (
+                <ListItem key={charScentences.id}>
+                  <ListItemText primary={charScentences.text} />
+                  <IconButton
+                    onClick={() => deleteScentenceById(charScentences.id)}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                  <IconButton
+                    onClick={() => modifyScentenceById(charScentences.id)}
+                  >
+                    <ChangeCircleIcon />
+                  </IconButton>
+                </ListItem>
+              );
+            })}
           </List>
         </Typography>
       </CardContent>
