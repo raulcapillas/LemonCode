@@ -95,6 +95,7 @@
         "url": "https://rickandmortyapi.com/api/location/3"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/1",
         "https://rickandmortyapi.com/api/episode/2",
@@ -167,6 +168,7 @@
         "url": "https://rickandmortyapi.com/api/location/20"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/6",
         "https://rickandmortyapi.com/api/episode/7",
@@ -230,6 +232,7 @@
         "url": "https://rickandmortyapi.com/api/location/20"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/6",
         "https://rickandmortyapi.com/api/episode/7",
@@ -293,6 +296,7 @@
         "url": "https://rickandmortyapi.com/api/location/20"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/5.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/6",
         "https://rickandmortyapi.com/api/episode/7",
@@ -353,6 +357,7 @@
         "url": "https://rickandmortyapi.com/api/location/2"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/6.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/27"
       ],
@@ -375,6 +380,7 @@
         "url": "https://rickandmortyapi.com/api/location/21"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/7.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/10",
         "https://rickandmortyapi.com/api/episode/11"
@@ -398,6 +404,7 @@
         "url": "https://rickandmortyapi.com/api/location/3"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/8.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/28"
       ],
@@ -420,6 +427,7 @@
         "url": "https://rickandmortyapi.com/api/location/20"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/9.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/24"
       ],
@@ -442,6 +450,7 @@
         "url": "https://rickandmortyapi.com/api/location/4"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/10.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/25"
       ],
@@ -464,6 +473,7 @@
         "url": "https://rickandmortyapi.com/api/location/20"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/11.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/12"
       ],
@@ -486,6 +496,7 @@
         "url": "https://rickandmortyapi.com/api/location/5"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/12.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/3"
       ],
@@ -508,6 +519,7 @@
         "url": "https://rickandmortyapi.com/api/location/20"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/13.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/31"
       ],
@@ -530,6 +542,7 @@
         "url": "https://rickandmortyapi.com/api/location/3"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/14.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/10"
       ],
@@ -552,6 +565,7 @@
         "url": "https://rickandmortyapi.com/api/location/3"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/15.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/10"
       ],
@@ -574,6 +588,7 @@
         "url": "https://rickandmortyapi.com/api/location/20"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/16.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/15"
       ],
@@ -596,6 +611,7 @@
         "url": "https://rickandmortyapi.com/api/location/5"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/17.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/3"
       ],
@@ -618,6 +634,7 @@
         "url": "https://rickandmortyapi.com/api/location/3"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/18.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/10",
         "https://rickandmortyapi.com/api/episode/28"
@@ -641,6 +658,7 @@
         "url": ""
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/19.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/10"
       ],
@@ -663,6 +681,7 @@
         "url": "https://rickandmortyapi.com/api/location/6"
       },
       "image": "https://rickandmortyapi.com/api/character/avatar/20.jpeg",
+      "scentences": [],
       "episode": [
         "https://rickandmortyapi.com/api/episode/8"
       ],

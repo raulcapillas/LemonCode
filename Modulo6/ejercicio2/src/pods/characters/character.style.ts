@@ -1,15 +1,13 @@
-import { css } from '@emotion/css';
+import { css } from "@emotion/css";
 
 export const content = css`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: stretch;
-  align-content: stretch;
 `;
 
 export const card = css`
   display: flex;
+  width: 900px;
 `;
 
 export const cardMedia = css`

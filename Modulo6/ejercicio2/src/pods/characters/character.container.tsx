@@ -8,7 +8,7 @@ import * as classes from "./character.style";
 import { Divider } from "@mui/material";
 import { deleteBestScentencesById } from "./character.business";
 import { v4 as uuidv4 } from "uuid";
-import { BestScentencesProvider, useBestScentences } from "hooks";
+import { BestScentencesProvider } from "hooks";
 
 export const CharacterContainer: React.FC = () => {
   const [character, setCharacter] =
